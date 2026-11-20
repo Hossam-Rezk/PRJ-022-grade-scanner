@@ -1,0 +1,16 @@
+# Python environment and caches (start_server.bat recreates .venv)
+.venv/
+__pycache__/
+*.pyc
+
+# PDFs
+*.pdf
+
+# Runtime data: scanned sheets and teacher corrections
+scans/
+data/corrections.csv
+check_photo.jpg
+
+# Model archives (the unpacked model in model/prj022_model is kept)
+model/*.zip
+*.tmp

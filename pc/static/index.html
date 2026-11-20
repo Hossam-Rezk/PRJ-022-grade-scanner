@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>PRJ-022 Grade Scanner</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="brand"><span class="logo">G</span>Grade Scanner <small>PRJ-022</small></div>
+  <nav id="tabs">
+    <button data-tab="exams" class="active">1. Exams</button>
+    <button data-tab="scan">2. Scan</button>
+    <button data-tab="review">3. Review</button>
+    <button data-tab="results">4. Results</button>
+  </nav>
+  <div class="chips" id="chips"></div>
+</header>
+
+<main>
+  <section id="tab-exams" class="tab">
+    <div class="split">
+      <aside class="card side">
+        <h2>Exams</h2>
+        <div id="exam-list" class="list"></div>
+        <button id="exam-new" class="btn full">+ New exam</button>
+      </aside>
+      <div id="exam-editor"></div>
+    </div>
+  </section>
+
+  <section id="tab-scan" class="tab" hidden>
+    <div class="grid2">
+      <div class="card">
+        <h2>Scan a batch</h2>
+        <label>Exam<select id="scan-exam"></select></label>
+        <label>Batch name<input id="scan-name" placeholder="e.g. Class 2B, Tuesday"></label>
+        <label>Source
+          <select id="scan-source">
+            <option value="real">Scanner (Pico over USB + camera)</option>
+            <option value="sim">Simulation (no hardware needed)</option>
+          </select>
+        </label>
+        <div class="row">
+          <button id="scan-start" class="btn primary">Start scanning</button>
+          <button id="scan-resume" class="btn primary" hidden>Continue</button>
+          <button id="scan-stop" class="btn danger" hidden>Stop</button>
+        </div>
+        <p id="scan-message" class="note"></p>
+        <hr>
+        <h3>Or mark photos from this PC</h3>
+        <p class="hint">Photos of the printed answer sheet, with all four corner markers visible.</p>
+        <input type="file" id="upload-files" accept="image/*" multiple>
+        <button id="upload-go" class="btn">Mark these photos</button>
+      </div>
+      <div class="card">
+        <h2>Progress</h2>
+        <div id="scan-progress" class="progress"></div>
+        <pre id="scan-log" class="log">Nothing scanned yet.</pre>
+      </div>
+    </div>
+  </section>
+
+  <section id="tab-review" class="tab" hidden>
+    <div class="bar">
+      <label class="inline">Batch <select class="batch-select"></select></label>
+      <span id="review-summary" class="hint"></span>
+    </div>
+    <div class="split">
+      <aside class="card side">
+        <h2>Students</h2>
+        <div id="student-list" class="list"></div>
+        <div id="sheet-errors"></div>
+      </aside>
+      <div id="student-detail"></div>
+    </div>
+  </section>
+
+  <section id="tab-results" class="tab" hidden>
+    <div class="bar">
+      <label class="inline">Batch <select class="batch-select"></select></label>
+      <a id="export-link" class="btn" href="#">Download CSV</a>
+    </div>
+    <div class="card" id="results-table"></div>
+  </section>
+</main>
+<div id="toast" hidden></div>
+<script src="app.js"></script>
+</body>
+</html>

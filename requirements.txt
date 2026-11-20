@@ -1,0 +1,12 @@
+fastapi
+uvicorn
+python-multipart
+pyserial
+mpremote
+opencv-python
+numpy
+pillow
+torch
+transformers
+sentencepiece
+protobuf
